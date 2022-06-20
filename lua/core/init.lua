@@ -1,11 +1,13 @@
 require('core.keymaps')
 require('core.plugins')
+-- require('github-theme').setup()
 
 -- basics
 vim.cmd('syntax on')
 vim.cmd('filetype plugin indent on')
-vim.cmd('colorscheme embark')
--- vim.cmd('colorscheme embark')
+-- vim.cmd('colorscheme embark') -- old one was embark
+-- vim.cmd('colorscheme github_dark_default')
+-- vim.cmd('colorscheme dogrun')
 
 local set = vim.opt
 
@@ -18,6 +20,7 @@ set.updatetime = 300
 -- Numbers
 set.number = true
 set.numberwidth = 1
+set.relativenumber = true
 set.ruler = true
 set.showcmd = true
 
@@ -55,7 +58,11 @@ set.mouse = 'a'
 -- delete chars outside of insert area
 set.backspace = 'indent,eol,start'
 
+
 require("configs.startscreen").config()
-require("configs.statusline").config()
 require("configs.outline").config()
 require("configs.telescope").config()
+require('lualine').setup()
+
+-- require('telescope').load_extension('fzf')
+require('telescope').load_extension('ui-select')

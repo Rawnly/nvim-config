@@ -21,6 +21,7 @@ local function noremap(lhs, rhs)
 end
 
 
+mapcmd('n', '<leader>wq', ':wq')
 
 mapcmd('n', '<Left>', ':echo "USE H"')
 mapcmd('n', '<Right>', ':echo "USE L"')
@@ -28,33 +29,27 @@ mapcmd('n', '<Up>', ':echo "USE K"')
 mapcmd('n', '<Down>', ':echo "USE J"')
 
 -- remap movement in insert mode and command mode
+inoremap('<UP>', '')
+inoremap('<DOWN>', '')
+inoremap('<LEFT>', '')
+inoremap('<RIGHT>', '')
+
 inoremap('<c-k>', '<up>')
 inoremap('<c-j>', '<down>')
 inoremap('<c-h>', '<left>')
 inoremap('<c-l>', '<right>')
 
-cnoremap('<c-k>', '<up>')
-cnoremap('<c-j>', '<down>')
-cnoremap('<c-h>', '<left>')
-cnoremap('<c-l>', '<right>')
-
-inoremap('<c-a>', '<esc>A')
-inoremap('<c-i>', '<esc>I')
-inoremap('<c-v>', '<esc>V')
-inoremap('<c-z>', '<esc>u')
-inoremap('<c-o>', '<esc>o')
-
 
 -- rapid search
 noremap('n', '<leader>ss', '/')
 
--- w: window
 map('n', '<leader>wv', '<c-w>v', { noremap = true, silent = true }) -- split vertically
+map('n', '<leader>ws', '<c-w>s', { noremap = true, silent = true }) -- split vertically
 
-noremap('n', '<leader>wh', '<c-w>h') -- move to left window
-noremap('n', '<leader>wj', '<c-w>j') -- move to bottom window
-noremap('n', '<leader>wk', '<c-w>k') -- move to top window
-noremap('n', '<leader>wl', '<c-w>l') -- move to right window
+noremap('<leader>wh', '<c-w>h') -- move to left window
+noremap('<leader>wj', '<c-w>j') -- move to bottom window
+noremap('<leader>wk', '<c-w>k') -- move to top window
+noremap('<leader>wl', '<c-w>l') -- move to right window
 
 mapcmd('n', '<leader>z', ':TZAtaraxis') -- toggle zen mode
 
@@ -72,4 +67,9 @@ mapcmd('n', '<leader>ee', ':NvimTreeToggle')
 mapcmd('n', '<leader>ef', ':NvimTreeFindFile')
 
 -- f: telescope
+mapcmd('n', '<c-p>', ':Telescope find_files')
 mapcmd('n', '<leader>ff', ':Telescope find_files')
+mapcmd('n', '<leader>fb', ':Telescope buffers')
+
+-- coc nvim -- 
+noremap('<leader>ac', '<Plug>(coc-codeaction)')
